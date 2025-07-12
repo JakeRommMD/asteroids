@@ -49,6 +49,12 @@ def main():
                 raise SystemExit("Game over!")
                 # Handle collision (e.g., reset player, reduce health, etc.)
 
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collision(shot):
+                    asteroid.split()
+                    shot.kill()
+
         screen.fill("black")
         # Draw the player
         for obj in drawable:
